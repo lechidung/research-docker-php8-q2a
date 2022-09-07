@@ -12,9 +12,12 @@ services:
       MYSQL_PASSWORD:      ${DB_PASS}
 
   web:
-    build: .
+    build: q2a
     ports:
     - '8080:8080'
+    volumes:
+      - ./source/:/var/www/html:rw
+    working_dir: /var/www/html/
     restart: always
     environment:
       QA_DB_USER: ${DB_USER}
